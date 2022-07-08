@@ -2,7 +2,7 @@
 <section>
     <div class="container">
             <div class="row row-cols-5">
-                <div class="col gy6" v-for="album, index in albumArrey" :key="index">
+                <div class="col" v-for="album, index in albumArrey" :key="index">
                     <SingleComponent :music="album"/>
                 </div>
             </div>
@@ -14,7 +14,10 @@ import SingleComponent from './SingleComponent.vue'
 import axios from 'axios';
 export default {
     name:'ListComponent',
-    SingleComponent,
+    components:{
+        SingleComponent,
+    },
+    
 
     data(){
         return{
@@ -45,27 +48,10 @@ export default {
 @import '../style/variables';
     section{
         background-color: $brand_secondary_color;
-        height: 100%;
-        padding: 30px;
+        height:calc(100vh - 60px) ;
+        
+        .col{
+            margin: 15px 0;
+        }
     }
-.my-card{
-    background-color:$brand_primary_color;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    
-    img{
-        width: 100%;
-    }
-
-    h3{
-        color: $primary_text;
-    }
-
-    div{
-        color:$secondary_text
-    }
-
-}
-
 </style>
