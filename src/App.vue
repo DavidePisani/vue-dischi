@@ -26,5 +26,11 @@ export default {
 
 <style lang="scss">
 @import './style/common';
-
+@import './style/variables';
+  #app{   
+      height: 100vh; 
+      width: 100%;    
+      background-color: $brand_secondary_color;   
+      overflow-y: auto;  
+  }
 </style>

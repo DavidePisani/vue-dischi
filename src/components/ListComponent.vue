@@ -1,15 +1,16 @@
 <template>
 <section>
-    <div class="container "> 
-        <div class="text-center">
+    <div class="container"> 
+        <div class="d-flex justify-center">
             <SearchBar @SearchGenre="GenreMusic"/>
         </div>
-            <div class=" text-center row row-cols-5">
-                <div class="col" v-for="album, index in SelectMusic" :key="index">
-                    <SingleComponent :music="album"/>
-                </div>
+
+        <div class=" text-center row row-cols-5">
+             <div class="col" v-for="album, index in SelectMusic" :key="index">
+                <SingleComponent :music="album"/>
             </div>
         </div>
+    </div>
 </section>
 </template> 
 <script>
@@ -28,21 +29,19 @@ export default {
         return{
             url: "https://flynn.boolean.careers/exercises/api/array/music",
             albumArrey:[],
-            musicValue:'All'
-            
+            musicValue:''  
         }
     },
 
     computed:{
-        
         SelectMusic(){
             if(this.musicValue === 'All'){
                 return this.albumArrey
-            }
+            }else{
                 return this.albumArrey.filter((music)=> {
-                    return music.genre.includes(this.musicValue);
-                })
-                
+                    return music.genre.includes(this.musicValue) || music.author.includes(this.musicValue) ;
+                });  
+            }               
         }
     },
 
@@ -73,9 +72,9 @@ export default {
 <style lang="scss" scoped>
 @import '../style/variables';
     section{
-        background-color: $brand_secondary_color;
-        height:calc(100% - 60px);
-        
+        // background-color: $brand_secondary_color;
+        // height:calc(100vh - 60px);
+
         .col{
             margin: 15px 0;
         }
