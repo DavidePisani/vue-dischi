@@ -5,7 +5,7 @@
             <SearchBar @SearchGenre="GenreMusic"/>
         </div>
             <div class=" text-center row row-cols-5">
-                <div class="col" v-for="album, index in albumArrey" :key="index">
+                <div class="col" v-for="album, index in SelectMusic" :key="index">
                     <SingleComponent :music="album"/>
                 </div>
             </div>
@@ -28,13 +28,22 @@ export default {
         return{
             url: "https://flynn.boolean.careers/exercises/api/array/music",
             albumArrey:[],
-            musicValue:''
+            musicValue:'All'
             
         }
     },
 
     computed:{
-          
+        
+        SelectMusic(){
+            if(this.musicValue === 'All'){
+                return this.albumArrey
+            }
+                return this.albumArrey.filter((music)=> {
+                    return music.genre.includes(this.musicValue);
+                })
+                
+        }
     },
 
     created(){
@@ -52,16 +61,10 @@ export default {
       })
     },
 
+   
     GenreMusic(value){
-       this.musicValue = value
-       if(this.musicValue === 'All'){
-        return this.albumArrey
-       }
-        return this.albumArrey.filter((music)=> {
-            return music.genre.includes(this.musicValue);
-        })
+        this.musicValue = value
     }
-
     
   }
 }
