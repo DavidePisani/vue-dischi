@@ -1,6 +1,7 @@
 <template>
-    <div>
+    <div class="d-flex">
         <div>
+            Genere
             <select id="music_genre" @change="$emit('SearchGenre', $event.target.value)">
                 <option value="All">All</option>
                 <option value="Rock">Rock</option>
@@ -11,6 +12,7 @@
         </div>
 
         <div>
+            Artista
             <select id="music_author" @change="$emit('SearchGenre', $event.target.value)">
                 <option value="All">All</option>
                 <option value="Bon Jovi">Bon Jovi</option>
@@ -38,5 +40,9 @@ export default {
 </script>
 
 <style>
+div{
+    color:white;
+    padding: 5px;
+}
 
 </style>

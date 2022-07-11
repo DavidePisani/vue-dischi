@@ -1,7 +1,7 @@
 <template>
 <section>
     <div class="container"> 
-        <div class="d-flex justify-center">
+        <div>
             <SearchBar @SearchGenre="GenreMusic"/>
         </div>
 
